@@ -1,0 +1,82 @@
+print("Hello World")
+
+a = 3
+b = 5
+c = a + b
+print(a, b, c)
+
+# Python string formatting for output
+print("a = {0}".format(a))
+print("a = {0}; b = {1}; c = {2}".format(a, b, c))
+
+# Python basic math operations
+# Division
+print(13 / 2)   #Regular division
+print(13 // 2)  #Integer division
+print(13 % 2)   #Modulus division, remainder of the division
+print(2 ** 4)   #Exponent operation, 2 to the power of 4
+​​
+
+# Python strings
+s = "food"
+print(s)
+print(s[0])
+print(s[1])
+print(len(s))
+print(s[0:2])
+print(s[2:0:-1])  #print a slice of string in reverse order
+
+# Python math package
+import math
+print(math.pi)
+print(math.sqrt(2))
+
+# Python list
+l = [1,2,3,4,5,6]
+print(l)
+long_l = [l, 7, 8, 9, 10]
+print(long_l)
+print(l * 2)  # repeat the list in multiple times
+print(l[2:5])
+
+# Python tuples
+# The difference between lists and tuples
+# Lists are mutable (changable)
+# Tuples are immutable (unchangable)
+t = (1,2,3,4,5,6)
+print(t)
+l[0] = 100
+print(l)
+# t(0) = 100   # will throw an exception because you can't change tuple
+
+#if statements​
+num = 10
+if num > 20:
+    print("The number is greater 20")
+else:
+    print("The number is less than or equal to 20")
+
+num = 14
+if num % 2 == 1:
+    print("{0} is an odd number".format(num))
+else:
+    print("{0} is an even number".format(num))
+
+# Python if-else expression (iif)
+result = "even number" if num % 2 == 0 else "odd number"
+print(result)
+
+# Python for loop
+for n in range(1,11):  # Be careful, the ending number is not included
+    print(n)
+
+a = [1,2,3,4,5,6]
+b = 8
+
+result = False
+for num in a:
+    if num == b:
+        result = True
+
+print(result)
+print("a is in b" if result else "a is not in b")
