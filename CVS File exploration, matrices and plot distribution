@@ -1,0 +1,88 @@
+setwd("path")
+
+# load the csv file, randomly draw from list,and save the list to another CSV file
+ids <- read.csv("Info.csv", header=FALSE)
+data <- ids[,1]
+result <- sample(data, 5, replace = TRUE)
+result
+write.csv(result, "Info5.csv")
+
+# Generate matrices
+col1 <- c(1:5)
+col2 <- c(101:105)
+col3 <- c(201:205)
+m = cbind(col1,col2)
+m = cbind(m, col3)
+m
+
+m10 <- matrix(0, nrow =10, ncol=10)
+m10
+diag(m10) = 5
+m10
+
+# Fuction to matrice
+i = 8
+j = 10
+m = matrix(0, nrow = i, ncol = j)
+m
+for(y in 1:j)
+{
+  for(x in 1:i)
+  {
+    value = x**2 + y**2
+    m[x,y] = value
+  }  
+}
+m
+
+n = 10
+i = rep(1:n, times=10)
+i
+j = rep(1:n, times=rep(n,n))
+j
+value = i**2 + j**2
+m = matrix(value, nrow=n, ncol=n)
+m[cbind(i,j)] = value
+m
+
+
+# 1 for red, 2 for blue; drawing and plot distribution 
+m = 5
+n = 200
+
+red <- rep(1, 100)
+blue <- rep(2, 200)
+red
+blue
+box <- c(red, blue)
+box
+
+r <- c()
+for (i in 1:n){
+  s <- sample(box, m, replace=TRUE)
+  # s
+  # s==1
+  red_count <- length(s[s==1])
+  ratio <- red_count / m
+  r = c(r, ratio)
+}
+r
+hist(r)
+plot(1:n, r)
+
+# stock prices in a vector and price change in a graph
+​​days <- 300
+t <- 1:300
+price <- 10
+
+t
+delta <- rnorm(days, mean = 1.001, sd = 0.005)
+delta
+p <- rep(10, days)
+p
+
+for(i in 2:days){
+  p[i] = p[i-1] * delta[i]
+}
+p
+plot(x=t, y=p, type="l")
