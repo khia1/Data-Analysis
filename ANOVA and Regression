@@ -1,0 +1,39 @@
+# ANOVA and Regression
+
+setwd("path")
+
+dt = read.csv("salary.csv", header=TRUE)
+
+t.test(salnow ~ sex, data = dt)
+
+dt$saldiff = dt$salnow - dt$salbeg
+
+t.test(saldiff ~ sex, data = dt)
+
+library(MASS)
+UScrime
+t.test(Prob ~ So, data = UScrime)
+
+
+aov.jobcat = aov(salnow ~ jobcat, data = dt)
+summary(aov.jobcat)
+
+jobcat.12 = dt[dt$jobcat==1 | dt$jobcat==2,]
+t.test(salnow ~ jobcat, data = jobcat.12)
+
+jobcat.13 = dt[dt$jobcat==1 | dt$jobcat==3,]
+t.test(salnow ~ jobcat, data = jobcat.13)
+
+jobcat.14 = dt[dt$jobcat==1 | dt$jobcat==4,]
+t.test(salnow ~ jobcat, data = jobcat.14)
+
+?lm
+lm.salary = lm(salnow ~ salbeg + sex + minority + edlevel, data = dt)
+summary(lm.salary)
+
+UScrime
+lm.crime = lm(Prob ~ Ed + GDP + Ineq + M.F, data=UScrime)
+summary(lm.crime)
+
+lm.crime = lm(y ~ Ed + GDP + Ineq + M.F, data=UScrime)
+summary(lm.crime)
