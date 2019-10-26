@@ -1,0 +1,116 @@
+# R Vectors, Matrices, Random Numbers
+
+setwd("Insert path here")
+
+a <- c(2, 7, 9)
+c(2, 7, 9) -> a
+
+a * 2
+
+a <- c(1:10)
+a <- seq(1, 10)
+
+for(i in c(1:10)){
+  print(paste("hello world",i))
+}
+
+id =c()
+for(i in c(1:99)){
+  id = c(id, paste("ID",i, sep=""))
+}
+id
+
+id = c(1:99)
+id = paste("ID", id, sep="")
+id
+
+a = c(0:50*2)
+a
+
+b = c(0:50 * 2 + 1)
+b
+
+# Vector slicing
+b[1:5]
+b[5:10]
+
+a * 2
+sin(a)
+a / 2
+# Mod operation - get the remainders in division
+a %% 2
+b %% 2
+
+c <- c("apple", "banana", "cranberry")
+c
+
+# Logical operations on vector
+f <- c(1:100)
+f %% 5 == 0
+f[f %% 5 == 0]
+
+# Random Numbers
+# Generate 100 randoms between 1 and 100 (exclusive)
+a <- runif(100, 1, 100)
+a
+hist(a)
+
+b <- rnorm(100, 50, 10)
+b
+hist(b)
+
+sample(a, 2)
+
+d1 <- runif(100, 1, 7)
+d2 <- runif(100, 1, 7)
+d1
+d2
+d = d1+d2
+d
+p10=d[d>=10 & d<11]
+length(p10)
+
+p12=d[d>=12 & d<14]
+length(p12)
+
+# Matrix
+mat <- matrix(1:100, nrow = 10, ncol = 10, byrow = T)
+mat
+mat <- matrix(1:100, nrow = 10, ncol = 10, byrow = F)
+mat
+
+# t() - transpose, rotating by 90 degrees
+t(mat)
+
+diag(mat) <- 0
+mat
+
+# Generate a all zero matrix
+a <- rep(0, 100)
+a
+mat <- matrix(a, nrow=10, ncol=10)
+mat
+
+x <- c(1:10)
+y <- c(101:110)
+x
+y
+mat = cbind(x, y)
+z <- runif(10, 1, 10)
+mat = cbind(mat, z)
+mat
+
+m = rbind(x, y)
+m
+m = rbind(m, z)
+m
+
+# Matrix fill (i,j) = value
+i = c(1,2,3,3,4,3)
+j = c(3,2,1,2,1,4)
+value = c(21,30, 7, 8, 6, 19)
+m = matrix(0, nrow=max(i), ncol=max(j))
+m[cbind(i,j)] = value
+m
+m[1,4] = 99
+m​
