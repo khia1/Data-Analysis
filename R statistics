@@ -1,0 +1,29 @@
+# R Statistics
+
+install.packages("moments")
+library("moments")
+mtcars
+plot(mtcars$wt)
+hist(mtcars$wt)
+skewness(mtcars$wt)
+kurtosis(mtcars$wt)
+hist(mtcars$mpg)
+skewness(mtcars$mpg)
+kurtosis(mtcars$mpg)
+
+mtcars
+mtcars[mtcars$cyl==6, "mpg"]
+cyl.6 = mean(mtcars[mtcars$cyl==6, "mpg"])
+cyl.4 = mean(mtcars[mtcars$cyl==4, "mpg"])
+cyl.6
+cyl.4
+t.test(mtcars$mpg ~ mtcars$cyl==6 | mtcars$cyl==4, data=mtcars)
+t.test(mpg ~ cyl==6 | cyl==4, data=mtcars)
+t.test(mpg ~ cyl==6 | cyl==8, data=mtcars)
+
+library(MASS)
+data()
+sleep
+?sleep
+
+t.test(extra ~ group, data=sleep)
