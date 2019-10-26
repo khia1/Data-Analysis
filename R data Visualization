@@ -1,0 +1,101 @@
+# R data Visualization
+
+setwd("path")
+
+mtcars
+?plot
+plot(x=mtcars$mpg, y=mtcars$wt)
+plot(x=mtcars$wt, y=mtcars$mpg)
+
+plot(mpg ~ wt, data=mtcars)
+
+# Install the visulization package ggplot2
+install.packages("ggplot2")
+library(ggplot2)
+
+?qplot
+qplot(x=wt, y=mpg, data=mtcars)
+qplot(x=wt, y=mpg, data=mtcars, color="red")
+qplot(x=wt, y=mpg, data=mtcars, color=-cyl)
+
+# ggplot is based on layers
+
+a = ggplot(data=mtcars, aes(x=wt, y=mpg))
+a
+a = a + geom_point(aes(color=-cyl, size=disp))
+a
+a = a + geom_smooth(method = "lm")
+a
+
+b = ggplot(data=mtcars, aes(mpg))
+b
+b = b + geom_histogram(aes(color="red", fill="red", alpha=0.5))
+b
+b = b + geom_area(stat="bin", fill="red", alpha=0.5)
+b = b + geom_density(kernel = "gaussian", color="#559922", fill="#004422", alpha=0.5)
+b
+
+
+c = ggplot(data=mtcars, aes(disp))
+c
+c = c + geom_histogram(aes(color="red", fill="red", alpha=0.5))
+c
+c = c + geom_area(stat="bin", fill="red", alpha=0.5)
+c = c + geom_density(kernel = "gaussian", color="#559922", fill="#004422", alpha=0.5)
+c
+
+install.packages("gapminder")
+library(gapminder)
+gapminder
+
+plot(lifeExp ~ gdpPercap, data = gapminder)
+qplot(y = lifeExp, x = gdpPercap, data=gapminder )
+
+d = ggplot(data=gapminder, aes(x=gdpPercap, y=lifeExp))
+d = d + geom_point(aes(color=continent, size=pop))
+d = d + geom_smooth(method="lm")
+d
+
+# Time series data
+economics
+e = ggplot(data=economics, aes(x=date, y=unemploy))
+# e = e + geom_point(aes(color="red"))
+e = e + geom_line()
+e
+
+# Stock price package
+install.packages("quantmod")
+library(quantmod)
+
+symbol = "GOOG"
+goog.price = getSymbols(Symbols = symbol, src = "yahoo")
+goog.price
+plot(GOOG$GOOG.Close)
+chartSeries(GOOG$GOOG.Close, theme = chartTheme("white"))
+
+symbol = "AAPL"
+aapl = getSymbols(Symbols = symbol, src = "yahoo")
+chartSeries(AAPL$AAPL.Close, theme = chartTheme("white"))
+
+# Retrive earthquake data from USGS
+
+url = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_day.csv"
+
+dt = read.table(url, header = TRUE, sep=",")
+
+# Google Maps package
+install.packages("ggmap")
+library(ggmap)
+
+?get_map
+
+ggmaps_key = ""insert here""
+register_google(key = ggmaps_key)
+
+map = get_map(location="location here", zoom=10, maptype="roadmap")
+ggmap(map)
+
+eqMap = get_map(location="location here", zoom=3, maptype="roadmap")
+eqMap = ggmap(eqMap)
+eqMap = eqMap + geom_point(data=dt, aes(x=longitude, y=latitude, color="red", size=mag))
+eqMap
