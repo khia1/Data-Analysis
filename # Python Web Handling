@@ -1,0 +1,46 @@
+# Python Web Handling
+
+from bs4 import BeautifulSoup   #HTML parsing
+import urllib.request           #HTTP communication
+import csv                      #Read/write with CSV files
+
+url = '''insert here'''
+filename ="insert here.csv"
+
+request = urllib.request.urlopen(url)
+html = request.read()
+soup = BeautifulSoup(html, "html.parser")
+
+# print(soup)
+
+# open mode: r for readonly, w for write only
+# "with" provides a safe mode to operate files
+# with open(filename, "w") as csvfile:
+#     # Set up the writer to CSV format
+#     writer = csv.writer(csvfile, delimiter = ",")
+#
+#     # Write the heading row to the file. Use a tuple in the writerow()
+#     writer.writerow(("product name", "price"))
+#
+#     result = soup.find_all("span", attrs={"itemprop":"name"})
+#     # for item in result:
+#     #     print(item)
+#     print(result[0].text.strip())
+#
+#
+#     price = soup.find_all("meta", attrs={"itemprop":"price"})
+#     # for item in result:
+#     #     print(item)
+#     print(price[0])
+#     writer.writerow((result[0].text.strip(), price[0]))
+
+url = "insert here​"
+filename ="insert here​.csv"
+
+request = urllib.request.urlopen(url)
+html = request.read()
+soup = BeautifulSoup(html, "html.parser")
+
+result = soup.find_all("a", attrs={"class":"result-title"})
+for item in result:
+    print(item.text)
