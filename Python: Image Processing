@@ -1,0 +1,51 @@
+from PIL import Image
+
+filename = 'images/Koala.jpg'
+
+img = Image.open(filename)
+
+# Image rotation
+rotated = img.rotate(180)
+
+# img.show()
+# rotated.show()
+rotated.save("images/Koala_rotated.jpg", "JPEG")
+
+# Convert to PNG format
+rotated.save("images/Koala_rotated.png", "PNG")
+
+# Resize images
+size = (400, 200)
+resized = img.resize(size)
+resized.save("images/Koala_resized.png", "PNG")
+
+# Crop images
+box = (100, 100, 400, 400)
+cropped = img.crop(box)
+cropped.save("images/Koala_cropped.png", "PNG")
+
+from PIL import ImageDraw
+from PIL import ImageFont
+
+# To write or draw on the image, we need to create new layers from the original image
+# Color space to be RGBA - red, green, blue, alpha
+
+size = (1024, 768)
+# Customized layer size
+# layer = Image.new("RGBA", size)
+
+# The original image size
+layer = Image.new("RGBA", img.size)
+
+# Specify the font file and size
+myfont = ImageFont.truetype("input here", 80)
+
+shape = ImageDraw.Draw(layer)
+shape.text((150,150), "Hello World", font=myfont, fill=(255,0,0,200))
+
+shape.ellipse((100,100,400,400), fill=(0,0,255,100))
+shape.line((100,100, 600,600), fill=(0,255,0,155), width=5)
+
+base = img.convert("RGBA")
+newimg = Image.alpha_composite(base, layer)
+newimg.save("images/Koala_text.png", "PNG")
