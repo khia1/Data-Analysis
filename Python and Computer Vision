@@ -1,0 +1,31 @@
+import numpy as np
+import cv2
+
+# template = cv2.imread('''Soccer/template.jpg''', 0)
+# # cv2.imshow("template", template)
+# players = cv2.imread('''Soccer/players.jpg''', 0)
+#
+# result = cv2.matchTemplate(players, template, cv2.TM_CCOEFF_NORMED)
+#
+# cv2.imwrite("test.jpg", result)
+
+file = '''images/test_pic2.jpg'''
+pic = cv2.imread(file)
+casc = "haarcascade_frontalf​ace_default.xml"
+
+# Create the haar cascade classifier
+facecasc = cv2.CascadeClassifier(casc)
+
+# Convert the color picture to gray
+gray = cv2.cvtColor(pic, cv2.COLOR_BGR2GRAY)
+
+# Detect faces in the image
+faces = facecasc.detectMultiScale(gray, scaleFactor=1.1,minNeighbors=10,minSize=(40,40),flags=0)
+print("Found {0} faces in the picture!".format(len(faces)))
+
+for (x, y, w, h) in faces:
+    r = int(w/2)
+    newimage = cv2.circle(img = pic, center= (x+r, y+r), radius = r, color=(255,0,0), thickness=5)
+
+cv2.imwrite("test.jpg", newimage)
+​
