@@ -1,0 +1,55 @@
+import re
+import urllib.request
+from bs4 import BeautifulSoup
+
+# with open("warandpeace.txt",'r') as file:
+#     data = file.read()
+#     # print(data)
+#
+#     regexKey = ​insert here
+#     pattern = re.compile(regexKey)
+#     words = re.findall(pattern, data)
+#     for item in words:
+#         print(item)​
+
+
+url = "insert here"
+
+page = urllib.request.urlopen(url)
+soup = BeautifulSoup(page, "html.parser")
+# print(soup)
+
+jobs = soup.find_all("section", attrs={"class": "card-content"})
+for job in jobs:
+    regKey = 'insert here'
+    pattern = re.compile(regKey)
+    words = re.findall(pattern, str(job))
+    # print(job)
+    for item in words:
+        print(item[10:])
+
+    regKey = 'insert here'
+    pattern = re.compile(regKey)
+    words = re.findall(pattern, str(job))
+    # print(job)
+    for item in words:
+        print(item[13:-7])
+        # print(item)
+
+    regKey = 'insert here'
+    pattern = re.compile(regKey)
+    words = re.findall(pattern, str(job))
+    # print(job)
+    for item in words:
+        print("long: " + item[8:-1])
+        # print(item)
+
+    regKey = 'insert here'
+    pattern = re.compile(regKey)
+    words = re.findall(pattern, str(job))
+    # print(job)
+    for item in words:
+        print("lat: " + item[7:-1])
+        # print(item)
+
+    print()
