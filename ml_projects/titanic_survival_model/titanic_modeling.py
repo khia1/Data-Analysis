@@ -1,6 +1,6 @@
 """
 Titanic Survival Modeling Project
-Author: Kati
+Author: Khia1
 
 Goal:
 Clean the dataset, perform basic exploratory checks, and compare:
